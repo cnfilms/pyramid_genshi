@@ -36,17 +36,17 @@ class TranslationStringAdaptor(gettext.NullTranslations):
         self.translate = translate
         self.pluralize = pluralize
         self.default_domain = default_domain
-        
-    def ugettext(self, message, domain=None):
+
+    def gettext(self, message, domain=None):
         if domain is None:
             domain = self.default_domain
         tmsg = self.translate(TranslationString(message, domain=domain))
         return tmsg
 
-    def dugettext(self, domain, message):
-        return self.ugettext(message, domain)
+    def dgettext(self, domain, message):
+        return self.gettext(message, domain)
     
-    def ungettext(self, msgid1, msgid2, n, domain=None):
+    def ngettext(self, msgid1, msgid2, n, domain=None):
         if domain is None:
             domain = self.default_domain
         if self.pluralize is not None:
@@ -57,8 +57,8 @@ class TranslationStringAdaptor(gettext.NullTranslations):
         else:
             return msgid2
         
-    def dungettext(self, domain, msgid1, msgid2, n):
-        return self.ungettext(msgid1, msgid2, n, domain)
+    def dngettext(self, domain, msgid1, msgid2, n):
+        return self.ngettext(msgid1, msgid2, n, domain)
 
 
 class GenshiTemplateRendererFactory(object):

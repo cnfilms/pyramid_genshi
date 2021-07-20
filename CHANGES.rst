@@ -1,3 +1,10 @@
+0.2.2
+-----
+
+- Python3 : ugettext become gettext
+
+
+
 0.2.1
 -----
 
